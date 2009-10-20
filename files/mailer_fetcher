@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'daemons'
+
+fetcher = File.join(File.dirname(__FILE__), '..', 'vendor', 'plugins', 'fetcher', 'script', 'listen.rb')
+options = {
+  :app_name   => "mailer_fetcher",
+  :ARGV       => ARGV,
+  :dir_mode   => :normal,
+  :dir        => File.join(File.dirname(__FILE__), '..', 'log'),
+  :log_output => true,
+  :multiple   => false,
+  :backtrace  => true,
+  :monitor    => true
+}
+  
+
+Daemons.run(fetcher, options)

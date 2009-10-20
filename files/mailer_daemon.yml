@@ -1,0 +1,36 @@
+:development:
+  type: imap
+  server: imap.gmail.com
+  username: test@metrikco.com
+  password: test2k9
+  port: 993
+  ssl: true
+  use_login: true
+  processed_folder: processed
+  error_folder: error
+  receiver: ComentarioReceiver
+  sleep_time: 60
+:local_staging:
+    type: imap
+    server: imap.gmail.com
+    username: test@metrikco.com
+    password: test2k9
+    port: 993
+    ssl: true
+    use_login: true
+    processed_folder: processed
+    error_folder: error
+    receiver: ComentarioReceiver
+sleep_time: 60
+
+
+:production:
+    type: imap
+    server: imap.gmail.com
+    username: inbox@suipit.com
+    password: metrik2k7
+    port: 993
+    ssl: true
+    use_login: true
+    processed_folder: processed
+    error_folder: error
