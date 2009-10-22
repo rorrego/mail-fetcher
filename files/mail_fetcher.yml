@@ -1,0 +1,12 @@
+:development:
+  type: imap
+  server: imap.gmail.com
+  username: user@domain.com
+  password: user123
+  port: 993
+  ssl: true
+  use_login: true
+  processed_folder: processed
+  error_folder: error
+  receiver: ComentarioReceiver
+  sleep_time: 60
