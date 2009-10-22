@@ -1,11 +1,10 @@
 puts '=> Loading Rails...'
 
 require File.dirname(__FILE__) + '/../../../../config/environment'
-require File.dirname(__FILE__) + '/../../../../app/overrides/action_mailer'
 
-config = YAML.load_file("#{RAILS_ROOT}/config/mailer_daemon.yml")[RAILS_ENV.to_sym].to_options
+config = YAML.load_file("#{RAILS_ROOT}/config/mail_fetcher.yml")[RAILS_ENV.to_sym].to_options
 invoker = Fetcher
-poller = invoker.create(config.merge({:type => :imap, :receiver => ComentarioReceiver}))
+poller = invoker.create(config.merge({:type => :imap, :receiver => Kernel.const_get(config[:receiver])}))
 puts '** Rails loaded.'
 puts "** Starting #{ invoker }..."
 puts '** Use CTRL-C to stop.'

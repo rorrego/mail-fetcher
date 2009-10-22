@@ -45,7 +45,7 @@ module Fetcher
         tries = 1
         begin
           puts "Fetcher::Imap.get_messages Parseando Mensaje #{uid}"
-          ComentarioReceiver.receive(msg)
+          @receiver.receive(msg)
           add_to_processed_folder(uid) if @processed_folder
         rescue => e
           #Rescatar Exception "Mysql::Error: MySQL server has gone away"          
@@ -67,12 +67,7 @@ module Fetcher
     # Store the message for inspection if the receiver errors
     def handle_bogus_message(message, e)
       create_mailbox(@error_folder)
-      @connection.append(@error_folder, message)
-      HoptoadNotifier.notify(
-            :error_class => "ComentarioReceiver #{e.class} Error", 
-            :error_message => "#{e.class}: #{e.message}", 
-            :request => { :params => {:message => message} }
-          )      
+      @connection.append(@error_folder, message)  
     end
     
     # Delete messages and log out

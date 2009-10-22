@@ -37,12 +37,9 @@ module Fetcher
 
 
     def listen
-      cambiar_usuario(1)
-           
       EM.run do
         while(!@shutdown) do
           puts "-- Running Fetcher at #{Time.now}"
-          cambiar_usuario(1)
           begin
             self.fetch
           rescue => e
