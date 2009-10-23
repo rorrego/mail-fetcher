@@ -9,7 +9,6 @@ files << {:name => 'Mail Fetcher DAEMON', :destination => "#{dir_base}/script/ma
 files << {:name => 'Mail Fetcher ComentarioReceiver', :destination => "#{dir_base}/app/models/comentario_receiver.rb", :origin => "#{dir_base}#{origin}comentario_receiver.rb"}
 files << {:name => 'Mail Fetcher TmailExtensions', :destination => "#{dir_base}/lib/tmail_extensions.rb", :origin => "#{dir_base}#{origin}tmail_extensions.rb"}
 
-
 files.each do |f|
   unless File.exist?(f[:destination])
     FileUtils.cp(f[:origin], f[:destination])
