@@ -2,7 +2,7 @@ puts '=> Loading Rails...'
 
 require File.dirname(__FILE__) + '/../../../../config/environment'
 
-config = YAML.load_file("#{RAILS_ROOT}/config/mail_fetcher.yml")[RAILS_ENV.to_sym].to_options
+config = YAML.load_file("#{RAILS_ROOT}/config/mail-fetcher.yml")[RAILS_ENV.to_sym].to_options
 invoker = Fetcher
 poller = invoker.create(config.merge({:type => :imap, :receiver => Kernel.const_get(config[:receiver])}))
 puts '** Rails loaded.'
